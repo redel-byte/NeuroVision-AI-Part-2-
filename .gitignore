@@ -231,3 +231,15 @@ __marimo__/
 
 # Local Codex instructions
 /AGENTS.md
+
+# Local MLflow state and generated training artifacts
+mlflow.db
+mlartifacts/
+mlruns/
+neurovision_artifacts/
+backup_transfer/
+backup_fine_tune/
+
+# Local model checkpoints and credentials must not be committed
+models/*.keras
+models/client_secret*.json

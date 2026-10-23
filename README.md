@@ -93,8 +93,7 @@ NeuroVisionAI/
 │   │   └── promote.py
 │   └── inference/
 │       └── predict.py
-├── app/
-│   └── streamlit_app.py
+├── app.py                        # Interface Streamlit
 ├── scripts/
 │   ├── audit_data.py
 │   ├── train_transfer.py
@@ -141,8 +140,21 @@ uv run python scripts/train_transfer.py
 uv run python scripts/train_finetune.py
 uv run python scripts/register_champion.py
 uv run python scripts/evaluate_champion.py
-uv run streamlit run app/streamlit_app.py
+uv run streamlit run app.py
 ```
+
+Pour lancer l'interface actuelle sur Windows depuis la racine du dépôt :
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+Le mode **Offline checkpoint demo** est sélectionné par défaut. Il lit
+`models/best_mobilenetv2_finetuned.keras` sans serveur MLflow ; ce fichier local
+n'est pas vérifié comme étant le champion enregistré de Part 3. Le mode
+**MLflow champion** nécessite le serveur Part 3 et, si Streamlit tourne sur le PC,
+un tunnel SSH actif vers ce serveur. L'application affiche une erreur rapide si
+le serveur n'est pas accessible.
 
 Pour un MLflow local **de développement**, prévoir un backend et stockage d’artefacts persistants (éviter le stockage éphémère d’un conteneur). Exemple de lancement à adapter à la version MLflow choisie :
 
